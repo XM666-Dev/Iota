@@ -1,0 +1,133 @@
+[gd_scene load_steps=18 format=3 uid="uid://bui03nxou5541"]
+
+[ext_resource type="PackedScene" uid="uid://dwxe0evnlcrpc" path="res://scene/2d/pattern_background/pattern_background.tscn" id="1_7qnas"]
+[ext_resource type="PackedScene" uid="uid://bgp3g5b6irjyi" path="res://scene/gui/slot_container/slot_container.tscn" id="1_otsfl"]
+[ext_resource type="Script" path="res://scene/gui/main.gd" id="1_qcbks"]
+[ext_resource type="Script" path="res://script/resources/2d/pattern/placeholder_pattern.gd" id="3_d7st3"]
+[ext_resource type="PackedScene" uid="uid://ibf12gsanmf2" path="res://scene/2d/player/player.tscn" id="3_ytarn"]
+[ext_resource type="Theme" uid="uid://duk1t8xj467kl" path="res://resources/theme/default/default.tres" id="4_axhq2"]
+[ext_resource type="Script" path="res://script/resources/2d/pattern/sprite_pattern.gd" id="4_bkqih"]
+[ext_resource type="Texture2D" uid="uid://b6aypmsbcii14" path="res://resources/texture/2d/cloud.png" id="5_5e4ye"]
+[ext_resource type="Texture2D" uid="uid://4p1hledcq4ms" path="res://resources/texture/item/apple.png" id="6_3di54"]
+[ext_resource type="Script" path="res://scene/main/StaticBody2D.gd" id="7_5x78w"]
+[ext_resource type="Texture2D" uid="uid://dxarficu4e4qf" path="res://icon.svg" id="11_p4c3u"]
+
+[sub_resource type="Resource" id="Resource_1g0f4"]
+script = ExtResource("3_d7st3")
+weight = 1.0
+
+[sub_resource type="Gradient" id="Gradient_ymiox"]
+colors = PackedColorArray(0.75, 0.75, 0.75, 1, 1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_5ioga"]
+script = ExtResource("4_bkqih")
+amount = 1
+cycle = 5.0
+cycle_randomness = 0.5
+texture = ExtResource("5_5e4ye")
+position_randomness = true
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color_initial_ramp = SubResource("Gradient_ymiox")
+weight = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_divcb"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gfoid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfqcs"]
+size = Vector2(128, 128)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_qcbks")
+
+[node name="PatternBackground" parent="." instance=ExtResource("1_7qnas")]
+z_index = -1
+cell_margin_left = 300.0
+cell_margin_top = 300.0
+cell_margin_right = 300.0
+cell_margin_bottom = 300.0
+patterns = Array[Resource("res://script/resource/2d/pattern/pattern.gd")]([SubResource("Resource_1g0f4"), SubResource("Resource_5ioga")])
+
+[node name="Creatures" type="Node2D" parent="."]
+
+[node name="Player" parent="Creatures" instance=ExtResource("3_ytarn")]
+position = Vector2(0, -25.0542)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 600)
+physics_material_override = SubResource("PhysicsMaterial_divcb")
+script = ExtResource("7_5x78w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_gfoid")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_scale = Vector2(0.1, 0.1)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(100, 100)
+texture = ExtResource("6_3di54")
+
+[node name="GuiLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerInventory" type="PanelContainer" parent="GuiLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_axhq2")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GuiLayer/PlayerInventory"]
+layout_mode = 2
+theme = ExtResource("4_axhq2")
+
+[node name="SlotContainer" parent="GuiLayer/PlayerInventory/ScrollContainer" instance=ExtResource("1_otsfl")]
+custom_minimum_size = Vector2(162, 54)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="GuiLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -160.0
+offset_right = 320.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_axhq2")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GuiLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GuiLayer/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("6_3di54")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(148, 169)
+mass = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_cfqcs")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("11_p4c3u")

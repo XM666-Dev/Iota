@@ -1,0 +1,116 @@
+[gd_scene load_steps=14 format=3 uid="uid://ibf12gsanmf2"]
+
+[ext_resource type="Script" path="res://scene/2d/player/player.gd" id="1_qafp0"]
+[ext_resource type="Texture2D" uid="uid://dv1u3xa56vwkp" path="res://resources/texture/2d/player/linzi/head.png" id="2_5o56l"]
+[ext_resource type="Texture2D" uid="uid://cuh46m1cjs2hu" path="res://resources/texture/2d/player/linzi/eye.png" id="3_dd5px"]
+[ext_resource type="Texture2D" uid="uid://cu5l6ddk0p5iq" path="res://resources/texture/2d/player/linzi/body.png" id="4_pgbrc"]
+[ext_resource type="PackedScene" uid="uid://cj28rakorpduh" path="res://scene/2d/item_holder/item_holder.tscn" id="5_i7fp7"]
+[ext_resource type="Texture2D" uid="uid://badvlrylasmel" path="res://resources/texture/2d/player/linzi/hand0.png" id="5_t0ml3"]
+[ext_resource type="Texture2D" uid="uid://57f865i171ul" path="res://resources/texture/2d/player/linzi/hand45.png" id="6_yypsh"]
+[ext_resource type="Texture2D" uid="uid://coguv6374dm0d" path="res://resources/texture/2d/player/linzi/hand90.png" id="7_7m1a0"]
+[ext_resource type="Texture2D" uid="uid://bqa7unodgudr" path="res://resources/texture/2d/player/linzi/hand315.png" id="8_wyyr1"]
+[ext_resource type="Texture2D" uid="uid://dgavi3a5450v7" path="res://resources/texture/2d/player/linzi/hand270.png" id="9_8oa02"]
+[ext_resource type="Script" path="res://script/item/item_storage.gd" id="10_namxn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj7ax"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_613eg"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_qafp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sj7ax")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Body" type="Node2D" parent="."]
+position = Vector2(-9, -19)
+
+[node name="Head" type="Sprite2D" parent="Body"]
+position = Vector2(0, -1)
+texture = ExtResource("2_5o56l")
+centered = false
+
+[node name="Eye" type="Sprite2D" parent="Body"]
+position = Vector2(8, 6)
+texture = ExtResource("3_dd5px")
+centered = false
+
+[node name="Trunk" type="Sprite2D" parent="Body"]
+texture = ExtResource("4_pgbrc")
+centered = false
+
+[node name="Hand0" type="Sprite2D" parent="Body" groups=["hand"]]
+position = Vector2(15, 16)
+texture = ExtResource("5_t0ml3")
+centered = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Hand0"]
+position = Vector2(7, 3)
+remote_path = NodePath("../../../Holder")
+
+[node name="Hand45" type="Sprite2D" parent="Body" groups=["hand"]]
+visible = false
+position = Vector2(13, 15)
+texture = ExtResource("6_yypsh")
+centered = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Hand45"]
+position = Vector2(6, 9)
+remote_path = NodePath("../../../Holder")
+update_position = false
+update_rotation = false
+update_scale = false
+
+[node name="Hand90" type="Sprite2D" parent="Body" groups=["hand"]]
+visible = false
+position = Vector2(14, 15)
+texture = ExtResource("7_7m1a0")
+centered = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Hand90"]
+position = Vector2(2, 9)
+remote_path = NodePath("../../../Holder")
+update_position = false
+update_rotation = false
+update_scale = false
+
+[node name="Hand270" type="Sprite2D" parent="Body" groups=["hand"]]
+visible = false
+position = Vector2(15, 11)
+texture = ExtResource("9_8oa02")
+centered = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Hand270"]
+position = Vector2(2, 1)
+remote_path = NodePath("../../../Holder")
+update_position = false
+update_rotation = false
+update_scale = false
+
+[node name="Hand315" type="Sprite2D" parent="Body" groups=["hand"]]
+visible = false
+position = Vector2(15, 11)
+texture = ExtResource("8_wyyr1")
+centered = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Body/Hand315"]
+position = Vector2(6, 1)
+remote_path = NodePath("../../../Holder")
+update_position = false
+update_rotation = false
+update_scale = false
+
+[node name="ItemStorage" type="Node" parent="."]
+script = ExtResource("10_namxn")
+
+[node name="Holder" type="Marker2D" parent="."]
+position = Vector2(13, 0)
+
+[node name="ItemHolder" parent="." instance=ExtResource("5_i7fp7")]
+position = Vector2(12, -7)
+rotation = 3.11151
+scale = Vector2(0.999938, 0.999938)
+texture = SubResource("ImageTexture_613eg")

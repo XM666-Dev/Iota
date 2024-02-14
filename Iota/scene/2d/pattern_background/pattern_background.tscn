@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwxe0evnlcrpc"]
+
+[ext_resource type="Script" path="res://scene/2d/pattern_background/pattern_background.gd" id="1_mpr5l"]
+
+[node name="PatternBackground" type="Node2D"]
+top_level = true
+script = ExtResource("1_mpr5l")
+cell_margin_right = 256.0
+cell_margin_bottom = 256.0

@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://bui03nxou5541"]
+
+[ext_resource type="PackedScene" uid="uid://dwxe0evnlcrpc" path="res://scene/2d/pattern_background/pattern_background.tscn" id="1_7qnas"]
+[ext_resource type="PackedScene" uid="uid://bgp3g5b6irjyi" path="res://scene/gui/slot_container/slot_container.tscn" id="1_otsfl"]
+[ext_resource type="Script" path="res://scene/gui/main.gd" id="1_qcbks"]
+[ext_resource type="PackedScene" uid="uid://ibf12gsanmf2" path="res://scene/2d/player/player.tscn" id="3_ytarn"]
+[ext_resource type="Theme" uid="uid://duk1t8xj467kl" path="res://resource/theme/default.tres" id="4_axhq2"]
+[ext_resource type="Texture2D" uid="uid://4p1hledcq4ms" path="res://resource/texture/item/apple.png" id="6_3di54"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_qcbks")
+
+[node name="PatternBackground" parent="." instance=ExtResource("1_7qnas")]
+position = Vector2(29528, 0)
+cell_size = Vector2(64, 64)
+cell_padding = Vector2(64, 64)
+
+[node name="Creatures" type="Node2D" parent="."]
+
+[node name="Player" parent="Creatures" instance=ExtResource("3_ytarn")]
+
+[node name="GuiLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerInventory" type="PanelContainer" parent="GuiLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_axhq2")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GuiLayer/PlayerInventory"]
+layout_mode = 2
+theme = ExtResource("4_axhq2")
+
+[node name="SlotContainer" parent="GuiLayer/PlayerInventory/ScrollContainer" instance=ExtResource("1_otsfl")]
+custom_minimum_size = Vector2(162, 54)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="GuiLayer"]
+visible = false
+offset_left = 168.0
+offset_top = 201.0
+offset_right = 808.0
+offset_bottom = 521.0
+theme = ExtResource("4_axhq2")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GuiLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GuiLayer/PanelContainer/ScrollContainer"]
+custom_minimum_size = Vector2(421, 666)
+layout_mode = 2
+texture = ExtResource("6_3di54")

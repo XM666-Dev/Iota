@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://4yaq80i050c1"]
+
+[ext_resource type="Texture2D" uid="uid://dxarficu4e4qf" path="res://icon.svg" id="1_bqdy3"]
+[ext_resource type="Texture2D" uid="uid://do00gxgs1uyv5" path="res://resources/texture/gui/slot.png" id="2_g5eex"]
+[ext_resource type="Script" path="res://scene/test/Sprite2D.gd" id="3_guy40"]
+[ext_resource type="Script" path="res://scene/test/Camera2D.gd" id="4_72gqp"]
+[ext_resource type="Texture2D" uid="uid://b6aypmsbcii14" path="res://resources/texture/2d/cloud.png" id="5_n2i5b"]
+
+[sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_5qe20"]
+target_nodepath = NodePath("../Stick")
+jiggle_data_chain_length = 3
+joint_data/0/bone_index = 0
+joint_data/0/bone2d_node = NodePath("Bone2D")
+joint_data/0/override_defaults = false
+joint_data/1/bone_index = 1
+joint_data/1/bone2d_node = NodePath("Bone2D/Bone2D2")
+joint_data/1/override_defaults = false
+joint_data/2/bone_index = 2
+joint_data/2/bone2d_node = NodePath("Bone2D/Bone2D2/Bone2D3")
+joint_data/2/override_defaults = false
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_pk0fd"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DJiggle_5qe20")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Polygons" type="Node2D" parent="."]
+visible = false
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygons"]
+texture = ExtResource("1_bqdy3")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(25, 5, 89, 38, 123, 110, 41, 68)
+uv = PackedVector2Array(25, 5, 89, 38, 123, 110, 41, 68)
+bones = ["Bone2D", PackedFloat32Array(0, 0.46, 0.46, 0.46), "Bone2D/Bone2D2", PackedFloat32Array(0, 0, 0, 0), "Bone2D/Bone2D2/Bone2D3", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Polygon2D2" type="Polygon2D" parent="Polygons"]
+
+[node name="Polygon2D3" type="Polygon2D" parent="Polygons"]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+visible = false
+modification_stack = SubResource("SkeletonModificationStack2D_pk0fd")
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D"]
+rotation = 0.0282057
+scale = Vector2(0.999999, 0.999999)
+rest = Transform2D(0.999596, 0.0282018, -0.0282018, 0.999596, 0, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Bone2D2" type="Bone2D" parent="Skeleton2D/Bone2D"]
+position = Vector2(55.9781, -1.57932)
+rotation = 0.00614429
+scale = Vector2(1, 1)
+rest = Transform2D(0.999982, 0.00600162, -0.00600162, 0.999982, 55.9803, -1.57935)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Bone2D3" type="Bone2D" parent="Skeleton2D/Bone2D/Bone2D2"]
+position = Vector2(54.9362, -3.3142)
+rotation = -2.34398
+rest = Transform2D(-0.710425, -0.703784, 0.703784, -0.710425, 54.9367, -3.31423)
+auto_calculate_length_and_angle = false
+length = 30.0
+bone_angle = 136.181
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Stick" type="Node2D" parent="."]
+position = Vector2(450, 310)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_g5eex")
+centered = false
+script = ExtResource("3_guy40")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("4_72gqp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 1
+lifetime = 3.0
+texture = ExtResource("5_n2i5b")
