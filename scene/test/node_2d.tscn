@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dxarficu4e4qf" path="res://icon.svg" id="1_bqdy3"]
 [ext_resource type="Texture2D" uid="uid://do00gxgs1uyv5" path="res://resources/texture/gui/slot.png" id="2_g5eex"]
-[ext_resource type="Script" path="res://scene/test/Sprite2D.gd" id="3_guy40"]
-[ext_resource type="Script" path="res://scene/test/Camera2D.gd" id="4_72gqp"]
+[ext_resource type="Script" uid="uid://bx80p60oa48ar" path="res://scene/test/Sprite2D.gd" id="3_guy40"]
+[ext_resource type="Script" uid="uid://bgxy6441e5v5j" path="res://scene/test/Camera2D.gd" id="4_72gqp"]
 [ext_resource type="Texture2D" uid="uid://b6aypmsbcii14" path="res://resources/texture/2d/cloud.png" id="5_n2i5b"]
 
 [sub_resource type="SkeletonModification2DJiggle" id="SkeletonModification2DJiggle_5qe20"]

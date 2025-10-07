@@ -22,8 +22,6 @@ func _ready():
 	position = Vector2.ZERO
 
 func _process(_delta):
-	if !Engine.is_editor_hint():
-		position.x += 1
 	queue_redraw()
 
 func _draw():

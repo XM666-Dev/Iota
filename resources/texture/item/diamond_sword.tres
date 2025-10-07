@@ -1,7 +1,7 @@
 [gd_resource type="Texture2D" script_class="MarkerTexture" load_steps=4 format=3 uid="uid://ckvs5foediex8"]
 
 [ext_resource type="PackedScene" uid="uid://bn27m5taeulba" path="res://resources/texture/item/diamond_sword.tscn" id="1_awscj"]
-[ext_resource type="Script" path="res://script/resources/2d/texture/marker_texture.gd" id="2_h5pcb"]
+[ext_resource type="Script" uid="uid://dte5w8xrxo37m" path="res://script/resources/2d/texture/marker_texture.gd" id="2_h5pcb"]
 [ext_resource type="Texture2D" uid="uid://gn1tc7hkye3a" path="res://resources/texture/item/diamond_sword.png" id="2_xdelb"]
 
 [resource]

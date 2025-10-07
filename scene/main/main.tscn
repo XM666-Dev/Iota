@@ -1,16 +1,38 @@
-[gd_scene load_steps=18 format=3 uid="uid://bui03nxou5541"]
+[gd_scene load_steps=23 format=3 uid="uid://bui03nxou5541"]
 
 [ext_resource type="PackedScene" uid="uid://dwxe0evnlcrpc" path="res://scene/2d/pattern_background/pattern_background.tscn" id="1_7qnas"]
 [ext_resource type="PackedScene" uid="uid://bgp3g5b6irjyi" path="res://scene/gui/slot_container/slot_container.tscn" id="1_otsfl"]
-[ext_resource type="Script" path="res://scene/gui/main.gd" id="1_qcbks"]
-[ext_resource type="Script" path="res://script/resources/2d/pattern/placeholder_pattern.gd" id="3_d7st3"]
+[ext_resource type="Script" uid="uid://ckxpkied7yxxv" path="res://scene/gui/main.gd" id="1_qcbks"]
+[ext_resource type="Script" uid="uid://dcpqts42j0drk" path="res://script/resources/2d/pattern/placeholder_pattern.gd" id="3_d7st3"]
+[ext_resource type="Script" uid="uid://d1rabgknvf4dw" path="res://script/resources/2d/pattern/pattern.gd" id="3_mgu1m"]
 [ext_resource type="PackedScene" uid="uid://ibf12gsanmf2" path="res://scene/2d/player/player.tscn" id="3_ytarn"]
 [ext_resource type="Theme" uid="uid://duk1t8xj467kl" path="res://resources/theme/default/default.tres" id="4_axhq2"]
-[ext_resource type="Script" path="res://script/resources/2d/pattern/sprite_pattern.gd" id="4_bkqih"]
+[ext_resource type="Script" uid="uid://jo4d6nn1kvbd" path="res://script/resources/2d/pattern/sprite_pattern.gd" id="4_bkqih"]
 [ext_resource type="Texture2D" uid="uid://b6aypmsbcii14" path="res://resources/texture/2d/cloud.png" id="5_5e4ye"]
 [ext_resource type="Texture2D" uid="uid://4p1hledcq4ms" path="res://resources/texture/item/apple.png" id="6_3di54"]
-[ext_resource type="Script" path="res://scene/main/StaticBody2D.gd" id="7_5x78w"]
+[ext_resource type="Script" uid="uid://bpr1rnnkf3ebw" path="res://scene/main/StaticBody2D.gd" id="7_5x78w"]
 [ext_resource type="Texture2D" uid="uid://dxarficu4e4qf" path="res://icon.svg" id="11_p4c3u"]
+
+[sub_resource type="Gradient" id="Gradient_36wa8"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_36wa8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n5o2v"]
+color_ramp = SubResource("Gradient_36wa8")
+noise = SubResource("FastNoiseLite_36wa8")
+
+[sub_resource type="Resource" id="Resource_n5o2v"]
+script = ExtResource("4_bkqih")
+amount = 1
+cycle = 0.0
+cycle_randomness = 0.0
+texture = SubResource("NoiseTexture2D_n5o2v")
+position_randomness = false
+scale_amount_min = 1.0
+scale_amount_max = 1.0
+weight = 1.0
+metadata/_custom_type_script = "uid://jo4d6nn1kvbd"
 
 [sub_resource type="Resource" id="Resource_1g0f4"]
 script = ExtResource("3_d7st3")
@@ -41,13 +63,22 @@ size = Vector2(128, 128)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qcbks")
 
+[node name="PatternBackground2" parent="." instance=ExtResource("1_7qnas")]
+z_index = -1
+cell_size = Vector2(512, 512)
+cell_margin_left = 300.0
+cell_margin_top = 300.0
+cell_margin_right = 512.0
+cell_margin_bottom = 512.0
+patterns = Array[ExtResource("3_mgu1m")]([SubResource("Resource_n5o2v")])
+
 [node name="PatternBackground" parent="." instance=ExtResource("1_7qnas")]
 z_index = -1
 cell_margin_left = 300.0
 cell_margin_top = 300.0
 cell_margin_right = 300.0
 cell_margin_bottom = 300.0
-patterns = Array[Resource("res://script/resource/2d/pattern/pattern.gd")]([SubResource("Resource_1g0f4"), SubResource("Resource_5ioga")])
+patterns = Array[ExtResource("3_mgu1m")]([SubResource("Resource_1g0f4"), SubResource("Resource_5ioga")])
 
 [node name="Creatures" type="Node2D" parent="."]
 
@@ -63,6 +94,7 @@ script = ExtResource("7_5x78w")
 shape = SubResource("WorldBoundaryShape2D_gfoid")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 scroll_base_scale = Vector2(0.1, 0.1)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]

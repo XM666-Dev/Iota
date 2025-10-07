@@ -1,7 +1,7 @@
 [gd_resource type="StyleBox" script_class="StyleBoxCustom" load_steps=5 format=3 uid="uid://bhii7bkm8o4gg"]
 
-[ext_resource type="Script" path="res://script/resources/gui/style_box_custom.gd" id="1_18h6p"]
-[ext_resource type="Script" path="res://script/resources/2d/texture/scale_texture.gd" id="2_2wtko"]
+[ext_resource type="Script" uid="uid://dctbua6d8p0ks" path="res://script/resources/gui/style_box_custom.gd" id="1_18h6p"]
+[ext_resource type="Script" uid="uid://dosw8igykdayb" path="res://script/resources/2d/texture/scale_texture.gd" id="2_2wtko"]
 [ext_resource type="Texture2D" uid="uid://do00gxgs1uyv5" path="res://resources/texture/gui/slot.png" id="3_mlrda"]
 
 [sub_resource type="Texture2D" id="Texture2D_0s2ya"]

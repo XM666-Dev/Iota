@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgp3g5b6irjyi"]
 
-[ext_resource type="Script" path="res://scene/gui/slot_container/slot_container.gd" id="1_g5ajo"]
+[ext_resource type="Script" uid="uid://583jm3yqqehq" path="res://scene/gui/slot_container/slot_container.gd" id="1_g5ajo"]
 [ext_resource type="PackedScene" uid="uid://dg7dt6p2lmpo3" path="res://scene/gui/slot/slot.tscn" id="2_j3qab"]
 
 [node name="SlotContainer" type="FlowContainer"]

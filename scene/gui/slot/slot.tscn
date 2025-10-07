@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dg7dt6p2lmpo3"]
 
 [ext_resource type="Texture2D" uid="uid://do00gxgs1uyv5" path="res://resources/texture/gui/slot.png" id="1_pom1e"]
-[ext_resource type="Script" path="res://scene/gui/slot/slot.gd" id="2_fy741"]
+[ext_resource type="Script" uid="uid://m4bok48mhood" path="res://scene/gui/slot/slot.gd" id="2_fy741"]
 
 [node name="Slot" type="NinePatchRect"]
 custom_minimum_size = Vector2(36, 36)

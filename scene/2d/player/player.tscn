@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://ibf12gsanmf2"]
 
-[ext_resource type="Script" path="res://scene/2d/player/player.gd" id="1_qafp0"]
+[ext_resource type="Script" uid="uid://b2x2mkvkgh281" path="res://scene/2d/player/player.gd" id="1_qafp0"]
 [ext_resource type="Texture2D" uid="uid://dv1u3xa56vwkp" path="res://resources/texture/2d/player/linzi/head.png" id="2_5o56l"]
 [ext_resource type="Texture2D" uid="uid://cuh46m1cjs2hu" path="res://resources/texture/2d/player/linzi/eye.png" id="3_dd5px"]
 [ext_resource type="Texture2D" uid="uid://cu5l6ddk0p5iq" path="res://resources/texture/2d/player/linzi/body.png" id="4_pgbrc"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://coguv6374dm0d" path="res://resources/texture/2d/player/linzi/hand90.png" id="7_7m1a0"]
 [ext_resource type="Texture2D" uid="uid://bqa7unodgudr" path="res://resources/texture/2d/player/linzi/hand315.png" id="8_wyyr1"]
 [ext_resource type="Texture2D" uid="uid://dgavi3a5450v7" path="res://resources/texture/2d/player/linzi/hand270.png" id="9_8oa02"]
-[ext_resource type="Script" path="res://script/item/item_storage.gd" id="10_namxn"]
+[ext_resource type="Script" uid="uid://ctuayxgwdjone" path="res://script/item/item_storage.gd" id="10_namxn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj7ax"]
 

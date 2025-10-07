@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj28rakorpduh"]
 
-[ext_resource type="Script" path="res://scene/2d/item_holder/item_holder.gd" id="1_qmqij"]
+[ext_resource type="Script" uid="uid://c6qriyu0bbibc" path="res://scene/2d/item_holder/item_holder.gd" id="1_qmqij"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_jmruy"]
 

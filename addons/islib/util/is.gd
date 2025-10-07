@@ -82,7 +82,7 @@ static func has_property(object: Object, property: StringName) -> bool:
 static func set_properties(object: Object, properties: Dictionary):
 	for key in properties:
 		assert(has_property(object, key))
-		object.set_indexed(key, properties[key])
+		object.set_indexed(NodePath(key), properties[key])
 
 static func create_from_dictionary(object_class: Object, properties: Dictionary) -> Object:
 	var object := object_class.new() as Object
